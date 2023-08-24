@@ -1,6 +1,11 @@
 package com.bdlproject.bdlweb.entities;
 
 import jakarta.persistence.*;
+import jdk.dynalink.linker.LinkerServices;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_employee")
@@ -44,6 +49,9 @@ public class Employee {
         this.sector = sector;
         //this.equipment = equipment;
     }
+
+    @OneToMany(mappedBy = "id.employee")
+    private Set<AssetEmployee> employees = new HashSet<>();
 
     // GETTER AND SETTER
     public Long getId() {
@@ -113,6 +121,19 @@ public class Employee {
     public void setSector(Sector sector) {
         this.sector = sector;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Set<AssetEmployee> getEmployees() {
+        return employees;
+    }
+
+    public List<Asset> getAssets() {
+        return employees.stream().map(x -> x.getAsset()).toList();
+    }
+
 
     // public Assets getEquipment() { return equipment; }
     // public void setEquipment(Assets equipment) { this.equipment = equipment; }

@@ -2,6 +2,10 @@ package com.bdlproject.bdlweb.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_asset")
 public class Asset {
@@ -23,6 +27,9 @@ public class Asset {
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
+
+    @OneToMany(mappedBy = "id.asset") // Para alcançar o asset_id que está na classe auxiliar
+    private Set<AssetEmployee> assets = new HashSet<>();
 
     //@OneToOne
     //@MapsId // pega o campo id da tabela tb_employee...
@@ -135,6 +142,15 @@ public class Asset {
 
     public void setSector(Sector sector) {
         this.sector = sector;
+    }
+
+    // Acessar os Employees a partir de Asset
+    public Set<AssetEmployee> getAssets() {
+        return assets;
+    }
+
+    public List<Employee> getEmployees() {
+        return assets.stream().map(x -> x.getEmployee()).toList();
     }
 
     //public Employee getIndirectEmployee() { return indirectEmployee; }
