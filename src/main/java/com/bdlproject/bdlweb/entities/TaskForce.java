@@ -41,8 +41,58 @@ public class TaskForce {
      * Caso se deseje ter outro nome basta substituir a annotation "@MapsId" por @JoinColumn(name = "nome-desejado")
      *****************************************************************************************************************/
 
-
     @OneToOne
     @JoinColumn(name = "leader_id")//@MapsId
     private User teamLeader;
+
+    public TaskForce() {
+    }
+
+    public TaskForce(Long id, String jobName, String jobDescription, User members, User teamLeader) {
+        this.id = id;
+        this.jobName = jobName;
+        this.jobDescription = jobDescription;
+        this.members = members;
+        this.teamLeader = teamLeader;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getJobName() {
+        return jobName;
+    }
+
+    public void setJobName(String jobName) {
+        this.jobName = jobName;
+    }
+
+    public String getJobDescription() {
+        return jobDescription;
+    }
+
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
+    }
+
+    public User getMembers() {
+        return members;
+    }
+
+    public void setMembers(User members) {
+        this.members = members;
+    }
+
+    public User getTeamLeader() {
+        return teamLeader;
+    }
+
+    public void setTeamLeader(User teamLeader) {
+        this.teamLeader = teamLeader;
+    }
 }

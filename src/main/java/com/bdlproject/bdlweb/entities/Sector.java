@@ -30,7 +30,7 @@ public class Sector {
     private Set<SectorExpense> expenses = new HashSet<>();
 
     @OneToMany(mappedBy = "sector")
-    private List<ProductionMeans> assets = new ArrayList<>();
+    private List<Asset> assets = new ArrayList<>();
 
     @OneToMany(mappedBy = "sector")
     private List<Employee> employees = new ArrayList<>();
@@ -98,7 +98,7 @@ public class Sector {
     }
 
     // Getter da lista de Assets
-    public List<ProductionMeans> getAssets() {
+    public List<Asset> getAssets() {
         return assets;
     }
 

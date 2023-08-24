@@ -1,5 +1,5 @@
 package com.bdlproject.bdlweb.entities;
 
 public enum UsageType {
-    PRODUCTIVE, NON_PRODUCTIVE;
+    PRODUCTION_MEANS, MANAGEMENT_MEANS;
 }

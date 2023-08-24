@@ -23,8 +23,8 @@ public class Employee {
     private Sector sector;
 
     // (1) indirectEmployee para (0 ou 1) equipment
-    @OneToOne(mappedBy = "indirectEmployee", cascade = CascadeType.ALL)
-    private ProductionMeans equipment;
+    //@OneToOne(mappedBy = "indirectEmployee", cascade = CascadeType.ALL)
+    //private Assets equipment;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private User user;
@@ -32,7 +32,7 @@ public class Employee {
     // CONSTRUTORES
     public Employee() {
     }
-    public Employee(Long id, String employeeNumber, String firstName, String lastName, Workforce workforce, Double salary, Double allocationTime, String job, Sector sector, ProductionMeans equipment) {
+    public Employee(Long id, String employeeNumber, String firstName, String lastName, Workforce workforce, Double salary, Double allocationTime, String job, Sector sector ) {
         this.id = id;
         this.employeeNumber = employeeNumber;
         this.firstName = firstName;
@@ -42,7 +42,7 @@ public class Employee {
         this.allocationTime = allocationTime;
         this.job = job;
         this.sector = sector;
-        this.equipment = equipment;
+        //this.equipment = equipment;
     }
 
     // GETTER AND SETTER
@@ -114,12 +114,7 @@ public class Employee {
         this.sector = sector;
     }
 
-    public ProductionMeans getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(ProductionMeans equipment) {
-        this.equipment = equipment;
-    }
+    // public Assets getEquipment() { return equipment; }
+    // public void setEquipment(Assets equipment) { this.equipment = equipment; }
 
 }

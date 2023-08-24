@@ -2,12 +2,9 @@ package com.bdlproject.bdlweb.entities;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
-@Table(name = "tb_production_means")
-public class ProductionMeans {
+@Table(name = "tb_asset")
+public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,19 +18,19 @@ public class ProductionMeans {
     private Double footprint;
     private Double surroundArea;
     private String manufacturer;
-    private String operator;
+    //private String operator;
 
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
 
-    @OneToOne
-    @MapsId // pega o campo id da tabela tb_employee...
-    private Employee indirectEmployee;
+    //@OneToOne
+    //@MapsId // pega o campo id da tabela tb_employee...
+    //private Employee indirectEmployee;
 
     // CONSTRUTORES
-    public ProductionMeans() { }
-    public ProductionMeans(Long id, String name, String assetNumber, UsageType usageType, Double currentPrice, Double energyUsage, String consumpUnit, Double footprint, Double surroundArea, String manufacturer, String operator, Sector sector, Employee indirectEmployee) {
+    public Asset() { }
+    public Asset(Long id, String name, String assetNumber, UsageType usageType, Double currentPrice, Double energyUsage, String consumpUnit, Double footprint, Double surroundArea, String manufacturer, Sector sector) {
         this.id = id;
         this.name = name;
         this.assetNumber = assetNumber;
@@ -44,9 +41,9 @@ public class ProductionMeans {
         this.footprint = footprint;
         this.surroundArea = surroundArea;
         this.manufacturer = manufacturer;
-        this.operator = operator;
+        // this.operator = operator;
         this.sector = sector;
-        this.indirectEmployee = indirectEmployee;
+        //this.indirectEmployee = indirectEmployee;
     }
 
     // GETTER AND SETTER
@@ -128,13 +125,9 @@ public class ProductionMeans {
         this.manufacturer = manufacturer;
     }
 
-    public String getOperator() {
-        return operator;
-    }
+    //public String getOperator() { return operator; }
 
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
+    //public void setOperator(String operator) { this.operator = operator; }
 
     public Sector getSector() {
         return sector;
@@ -144,12 +137,8 @@ public class ProductionMeans {
         this.sector = sector;
     }
 
-    public Employee getIndirectEmployee() {
-        return indirectEmployee;
-    }
+    //public Employee getIndirectEmployee() { return indirectEmployee; }
 
-    public void setIndirectEmployee(Employee indirectEmployee) {
-        this.indirectEmployee = indirectEmployee;
-    }
+    //public void setIndirectEmployee(Employee indirectEmployee) {this.indirectEmployee = indirectEmployee; }
 
 }
