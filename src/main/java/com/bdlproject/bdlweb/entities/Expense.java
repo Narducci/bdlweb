@@ -1,7 +1,7 @@
 package com.bdlproject.bdlweb.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.boot.model.naming.ImplicitAnyDiscriminatorColumnNameSource;
+
 
 import java.time.LocalDate;
 import java.util.HashSet;

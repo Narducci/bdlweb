@@ -11,18 +11,15 @@ public class Regime {
     private String shortName;
     private String description;
 
-    // Construtor vazio
     public Regime() {
     }
 
-    // Construtor de todos os atributos
     public Regime(Long id, String shortName, String description) {
         this.id = id;
         this.shortName = shortName;
         this.description = description;
     }
 
-    // Getter and Setter de todos os atributos
     public Long getId() {
         return id;
     }
