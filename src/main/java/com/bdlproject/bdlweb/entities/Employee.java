@@ -1,7 +1,6 @@
 package com.bdlproject.bdlweb.entities;
 
 import jakarta.persistence.*;
-import jdk.dynalink.linker.LinkerServices;
 
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +21,6 @@ public class Employee {
     private Double allocationTime;
     private String job;
 
-    // Incluir o campo "sector_id" nesta classe
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
@@ -31,8 +29,8 @@ public class Employee {
     //@OneToOne(mappedBy = "indirectEmployee", cascade = CascadeType.ALL)
     //private Assets equipment;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
-    private User user;
+   @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+   private User user;
 
     // CONSTRUTORES
     public Employee() {
@@ -134,8 +132,5 @@ public class Employee {
         return employees.stream().map(x -> x.getAsset()).toList();
     }
 
-
-    // public Assets getEquipment() { return equipment; }
-    // public void setEquipment(Assets equipment) { this.equipment = equipment; }
 
 }
