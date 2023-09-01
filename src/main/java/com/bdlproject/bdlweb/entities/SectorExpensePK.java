@@ -7,7 +7,7 @@ import jakarta.persistence.ManyToOne;
 @Embeddable
 public class SectorExpensePK {
 
-    // Classe auxiliar para compor a chave primária contendo as chaves das classes relacionadas
+    // Classe auxiliar para compor a chave primária da tabela associativa tb_sector_expense contendo as chaves das classes relacionadas
     // importante: é necessário incluir a annotation @Embeddable sobre o nome da classe...
 
     @ManyToOne

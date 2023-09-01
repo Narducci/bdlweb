@@ -13,11 +13,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    // Muitas categorias para uma depreciação
-    @ManyToOne
-    @JoinColumn(name = "depreciation_period_id")
-    private DepreciationPeriod depreciationPeriod;
+    private Integer timeframe_month;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -29,9 +25,12 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long id, String name) {
+    public Category(Long id, String name, Integer timeframe_month, Category categories, List<Expense> expenses) {
         this.id = id;
         this.name = name;
+        this.timeframe_month = timeframe_month;
+        this.categories = categories;
+        this.expenses = expenses;
     }
 
     public Long getId() {
@@ -50,7 +49,24 @@ public class Category {
         this.name = name;
     }
 
+    public Integer getTimeframe_month() {
+        return timeframe_month;
+    }
+
+    public void setTimeframe_month(Integer timeframe_month) {
+        this.timeframe_month = timeframe_month;
+    }
+
+    public Category getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Category categories) {
+        this.categories = categories;
+    }
+
     public List<Expense> getExpenses() {
         return expenses;
     }
+
 }
