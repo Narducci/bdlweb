@@ -22,20 +22,20 @@ public class Employee {
     private String job;
 
     @ManyToOne
+    @JoinColumn(name = "regime_id")
+    private Regime regime;
+
+    @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
-
-    // (1) indirectEmployee para (0 ou 1) equipment
-    //@OneToOne(mappedBy = "indirectEmployee", cascade = CascadeType.ALL)
-    //private Assets equipment;
 
    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
    private User user;
 
-    // CONSTRUTORES
     public Employee() {
     }
-    public Employee(Long id, String employeeNumber, String firstName, String lastName, Workforce workforce, Double salary, Double allocationTime, String job, Sector sector ) {
+
+    public Employee(Long id, String employeeNumber, String firstName, String lastName, Workforce workforce, Double salary, Double allocationTime, String job, Regime regime, Sector sector, User user, Set<AssetEmployee> employees) {
         this.id = id;
         this.employeeNumber = employeeNumber;
         this.firstName = firstName;
@@ -44,8 +44,10 @@ public class Employee {
         this.salary = salary;
         this.allocationTime = allocationTime;
         this.job = job;
+        this.regime = regime;
         this.sector = sector;
-        //this.equipment = equipment;
+        this.user = user;
+        this.employees = employees;
     }
 
     @OneToMany(mappedBy = "id.employee")
@@ -132,5 +134,16 @@ public class Employee {
         return employees.stream().map(x -> x.getAsset()).toList();
     }
 
+    public Regime getRegimes() {
+        return regime;
+    }
+
+    public void setRegimes(Regime regime) {
+        this.regime = regime;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }

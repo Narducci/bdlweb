@@ -2,6 +2,9 @@ package com.bdlproject.bdlweb.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_regime")
 public class Regime {
@@ -10,6 +13,9 @@ public class Regime {
     private Long id;
     private String shortName;
     private String description;
+
+    @OneToMany(mappedBy = "regime")
+    private List<Employee> employees = new ArrayList<>();
 
     public Regime() {
     }
